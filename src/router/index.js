@@ -15,6 +15,18 @@ const  routes = [
         alias:'/home',
         name: 'home',
         component: () => import('@/components/HomeView.vue')
+    },
+    {
+        path: '/product/:id',
+        alias:'/product',
+        name: 'product',
+        component: () => import('@/components/ProductView.vue')
+    },
+    {
+        path: '/crear',
+        alias:'/crear',
+        name: 'crear',
+        component: () => import('@/components/CreateProduct.vue')
     }
 ]
 

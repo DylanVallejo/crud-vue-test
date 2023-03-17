@@ -42,7 +42,7 @@
                 </section>
             </div>
             <section>
-                 <button @click.prevent="login" type="submit" class="btn btn-info btn-width">Acceder</button>
+                <button @click.prevent="login" type="submit" class="btn btn-info btn-width">Acceder</button>
             </section>
             
             <div class="input-group-text d-flex justify-content-evenly">
@@ -67,7 +67,7 @@
     import axios from 'axios';
     import { inject } from 'vue';
     import { useRouter,  } from 'vue-router'
-    
+
     const setToken = inject('setToken');
     
     const router = useRouter()
@@ -85,7 +85,6 @@
 
         axios.post(url,object)
         .then(res=>{
-            console.log(res.status)
             if(res.status === 200){
                 setToken(res.data)
                 router.push({name:'home'})
