@@ -1,11 +1,24 @@
 <template>
-    <div class="container">
-        <h2>Update Product</h2>
-        <input type="text" v-model="newProduct.name" />
-        <input type="text" v-model="newProduct.observation">
-        <input type="file" @change="onFileChange">
-        <img v-if="newProduct.photo"  :src="newProduct.photo" class="img-fluid rounded-start" />
-        <input type="text" v-model="newProduct.price"  >
+
+    <form class="container-fluid row p-4">
+        
+        <h2>Add Product</h2>
+        <div class="form-floating mb-3">
+            <input type="text" id="nameInput" class="form-control" v-model="newProduct.name" />
+            <label for="nameInput">Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" id="observationInput" class="form-control" v-model="newProduct.observation">
+            <label for="observationInput">Observation</label>
+        </div>
+        <div class="form mb-3">
+            <input type="file" id="fileInput"  @change="onFileChange">
+            <img v-if="newProduct.photo"  :src="newProduct.photo" class="img-fluid rounded" />
+        </div>
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" v-model="newProduct.price"  >
+            <label for="fileInput">price</label>
+        </div>
         
         <div class="form-group">
             <label for="selectSize" class="form-label mt-4">Size</label>
@@ -16,10 +29,14 @@
             </select>
         </div>
         
-        <button @click.prevent="createProduct" type="submit" class="btn btn-info btn-width">Crear</button>
+        <div class="form-group">
+            <button @click.prevent="createProduct" type="submit" class="btn btn-info btn-width">Crear</button>
+            <button @click.prevent="$event=>$router.push(`/home`)" class="btn btn-dark m-3">
+                Regresar
+            </button>
+        </div>
         
-        
-    </div>
+    </form>
     
 </template>
 <script setup>
@@ -69,8 +86,8 @@
     }
 </script>
 <style scoped>
-/* .img-fluid{
+.img-fluid{
     height: 200px;
-} */
+}
 
 </style>

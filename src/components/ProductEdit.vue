@@ -1,14 +1,35 @@
 <template>
-    <div class="container">
+    <form class="container-fluid row p-4">
+        
+        <!-- <div class="form-floating mb-3">
+            <input type="text" id="nameInput" class="form-control" v-model="newProduct.name" />
+            <label for="nameInput">Name</label>
+        </div> -->
+
         <h2>Update Product</h2>
-        <input type="text" v-model="values.name" />
-        <input type="text" v-model="values.observation">
-        <input type="file" @change="onFileChange">
-        <img v-if="values.photo"  :src="values.photo" class="img-fluid rounded-start" />
-        <input type="text" v-model="values.price"  >
+        
+        <div class="form-floating mb-3">
+            <input type="text" id="newProductInput" class="form-control" v-model="values.name" />
+            <label for="newProductInput">New Name</label>
+        </div> 
+        
+        <div class="form-floating mb-3">
+            <input type="text" id="newObservationInput" class="form-control" v-model="values.observation">
+            <label for="newObservationInput">New Observation</label>
+        </div> 
+        <div class="form-floating mb-3">
+            <input type="file" id="newImageInput" class="form-control" @change="onFileChange">
+            <label for="newImageInput">New Image</label>
+            <img v-if="values.photo"  :src="values.photo" class="img-fluid rounded-start" />
+        </div> 
+        <div class="form-floating mb-3">
+            <input type="text" id="newPriceInput" class="form-control" v-model="values.price"  >
+            <label for="newPriceInput">New Price</label>
+        </div> 
+    
         <!-- <input type="select" v-model="values.size"  > -->
         
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="selectSize" class="form-label mt-4">New Size. Current Size: {{ props.data.size }}</label>
             <select class="form-select" id="selectSize" v-model="values.size">
                 <option value="s">S</option>
@@ -17,10 +38,13 @@
             </select>
         </div>
         
-        <button @click.prevent="updateProduct" type="submit" class="btn btn-info btn-width">Actualizar</button>
-        
-        
-    </div>
+        <button @click.prevent="updateProduct" type="submit" class="btn btn-info m-3 btn-width">
+            Actualizar
+        </button>
+        <button @click="$event=>$router.push(`/home`)" class="btn btn-dark m-3 btn-width">
+            Regresar
+        </button>
+    </form>
     
 </template>
 <script setup>
@@ -44,7 +68,7 @@
         observation: props.data.observation,
         photo: props.data.photo,
         price: props.data.price,
-        size: props.data.size
+        size: props.data.size.toLowerCase()
     })
     
     const config = {
@@ -54,9 +78,9 @@
     };
     
     function updateProduct(){
-        // console.log(url)
-        // console.log(values)
-        // console.log(config)
+        console.log(url)
+        console.log(values)
+        console.log(config)
         
         
         axios.patch(url,values,config)

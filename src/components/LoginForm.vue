@@ -1,6 +1,6 @@
 <template>
-    <form class="container-fluid bg-image color  row ">
-        <div class="container imagen" >
+    <form class="container-fluid bg-image row">
+        <div class="container imagen " >
             <section>
                 <h2 class="first-title">Que bueno volver a verte</h2>
                 <h3 class="second-title">Bienvenido a <br>ILLARLI</h3>
@@ -179,5 +179,27 @@
     right: 0;
     bottom: 0;
     color: grey;
+}
+@media screen and (max-width: 400px) {
+    .persona{
+        height: 30vh;
+        right: -125%;
+        bottom:10;
+        color: grey;
+    }
+    .container-fluid .imagen{
+        height: 40vh;
+    }
+    .container-fluid {
+        height: 50vh;
+        width: auto;
+    }
+    .container-fluid .form{
+        width: auto;
+        height: 70vh;
+        padding: 10px;
+        border-radius: 0px;
+        
+    }
 }
 </style>
